@@ -1,0 +1,10 @@
+#!/bin/bash
+as solo.s -o solo.o
+as print_binary.s -o print_binary.o
+as print_decimal_digit.s -o print_decimal_digit.o
+as emit.s -o emit.o
+ld -o solo print_binary.o solo.o emit.o print_decimal_digit.o\
+    -lSystem -syslibroot `xcrun -sdk macosx --show-sdk-path`
+
+otool solo -vx -j -d
+./solo
