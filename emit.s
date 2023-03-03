@@ -1,6 +1,4 @@
 .align 2
-.data
-m: .word 0 
 .text
 .global _emit
 _emit:
@@ -21,3 +19,5 @@ _emit:
     ldp      x29, x30, [sp], #16
     ret
 
+.data
+m: .double 0 

@@ -1,7 +1,7 @@
 .align 2
-.global _print_binary
+.global _print_binary_blocks
 .text
-_print_binary:
+_print_binary_blocks:
     stp x29, x30, [sp, #-16]!
     mov x29, sp
     arg .req X9
@@ -18,7 +18,16 @@ scan_start:
     and result, arg,mask
     lsr result,result,counter
     mov x0, result
-    bl _print_decimal_digit
+    cmp x0, 0x0
+    beq space
+block:
+    bl _print_block
+    b continue
+space:
+    mov x0, 0x20
+    bl _emit
+    ;bl _print_block
+continue:
     sub counter,counter,#1
     b scan_start
 scan_stop:

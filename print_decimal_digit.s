@@ -1,3 +1,4 @@
+.align 2
 .data
 d:  .double 5
 .text

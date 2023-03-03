@@ -1,0 +1,2 @@
+#!/bin/bash
+clang solo.s print_binary.s print_binary_blocks.s print_decimal_digit.s print_block.s emit.s hide_cursor.s -o program

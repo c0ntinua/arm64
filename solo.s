@@ -2,16 +2,10 @@
     .data
     .global _main
 .text
-;_function_template:
-;    stp      x29, x30, [sp, #-16]!
-;    mov     x29, sp
-;    ;stuff
-;    ldp      x29, x30, [sp], #16
-;    ret
-
 _main:
     stp      x29, x30, [sp, #-16]!
     mov     x29, sp
+    bl _hide_cursor
     ldr x0,=0x7FFFFFFFFFFFFFFF
     ;movz     x0,0b1111111111111111
     ;movz    x0, 0b1000000000000000
@@ -37,7 +31,8 @@ while:
     cmp counter,0
     blt  done
     mov X0,counter
-    bl  _print_binary
+    ;bl  _print_binary
+    bl _print_binary_blocks
 not_done:
     sub  counter,counter,1
     b       while

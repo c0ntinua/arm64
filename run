@@ -3,8 +3,10 @@ as solo.s -o solo.o
 as print_binary.s -o print_binary.o
 as print_decimal_digit.s -o print_decimal_digit.o
 as emit.s -o emit.o
-ld -o solo print_binary.o solo.o emit.o print_decimal_digit.o\
+as hide_cursor.s -o hide_cursor.o
+as print_block.s -o print_block.o
+as print_binary_blocks.s -o print_binary_blocks.o
+ld -o program print_binary.o print_block.o print_binary_blocks.o solo.o emit.o print_decimal_digit.o hide_cursor.o\
     -lSystem -syslibroot `xcrun -sdk macosx --show-sdk-path`
 
-otool solo -vx -j -d
-./solo
+#otool program -vx -j -d
